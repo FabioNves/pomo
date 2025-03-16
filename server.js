@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const helmet = require("helmet");
+// const helmet = require("helmet");
 
 dotenv.config();
 
@@ -19,24 +19,24 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-// Configure Helmet for security
-app.use(
-  helmet({
-    contentSecurityPolicy: {
-      directives: {
-        defaultSrc: ["'self'"],
-        imgSrc: ["'self'", "data:", "https://pomo-pzgr.onrender.com"],
-        scriptSrc: ["'self'"],
-        styleSrc: ["'self'", "'unsafe-inline'"],
-        connectSrc: [
-          "'self'",
-          process.env.FRONTEND_URL_PROD,
-          process.env.FRONTEND_URL_DEV,
-        ],
-      },
-    },
-  })
-);
+// // Configure Helmet for security
+// app.use(
+//   helmet({
+//     contentSecurityPolicy: {
+//       directives: {
+//         defaultSrc: ["'self'"],
+//         imgSrc: ["'self'", "data:", "https://pomo-pzgr.onrender.com"],
+//         scriptSrc: ["'self'"],
+//         styleSrc: ["'self'", "'unsafe-inline'"],
+//         connectSrc: [
+//           "'self'",
+//           process.env.FRONTEND_URL_PROD,
+//           process.env.FRONTEND_URL_DEV,
+//         ],
+//       },
+//     },
+//   })
+// );
 
 mongoose
   .connect(process.env.MONGO_URI)
