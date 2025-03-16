@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import axios from "axios";
 
 const alarmSound = new Audio("/futuristic_alarm.mp3"); // Add your alarm sound file in the public folder
+const BACKEND_URL = "https://pomo-pzgr.onrender.com/";
 
 const PomodoroTimer = () => {
   // const [sessionEnded, setSessionEnded] = useState(false);
@@ -34,7 +35,7 @@ const PomodoroTimer = () => {
     };
 
     try {
-      await axios.post("http://localhost:5000/api/sessions", sessionData);
+      await axios.post(`${BACKEND_URL}/api/sessions`, sessionData);
       console.log("Session saved successfully");
       setIsRunning(false);
       setTime(focusTime * 60);
@@ -52,7 +53,7 @@ const PomodoroTimer = () => {
   useEffect(() => {
     const fetchSessions = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/sessions");
+        const response = await axios.get(`${BACKEND_URL}/api/sessions`);
         setSessions(response.data);
       } catch (error) {
         console.error("Error fetching sessions", error);
@@ -65,7 +66,7 @@ const PomodoroTimer = () => {
   useEffect(() => {
     const updateSessions = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/sessions");
+        const response = await axios.get(`${BACKEND_URL}/api/sessions`);
         setSessions(response.data);
       } catch (error) {
         console.error("Error updating sessions", error);
