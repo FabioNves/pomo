@@ -3,7 +3,10 @@ import { motion } from "framer-motion";
 import axios from "axios";
 
 const alarmSound = new Audio("/futuristic_alarm.mp3"); // Add your alarm sound file in the public folder
-const BACKEND_URL = "https://pomo-pzgr.onrender.com/";
+const BACKEND_URL =
+  process.env.NODE_ENV === "production"
+    ? process.env.REACT_APP_BACKEND_URL_PROD
+    : process.env.REACT_APP_BACKEND_URL_DEV;
 
 const PomodoroTimer = () => {
   // const [sessionEnded, setSessionEnded] = useState(false);

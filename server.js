@@ -10,7 +10,10 @@ app.use(express.json());
 
 // Configure CORS
 const corsOptions = {
-  origin: "http://localhost:3000", // Replace with your frontend URL
+  origin:
+    process.env.NODE_ENV === "production"
+      ? process.env.FRONTEND_URL_PROD
+      : process.env.FRONTEND_URL_DEV, // Replace with your frontend URL
   optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
