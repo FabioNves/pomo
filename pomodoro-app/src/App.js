@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import PomodoroTimer from "./PomodoroTimer";
+import PomodoroTimer from "./components/PomodoroTimer";
 import Analytics from "./Analytics";
 
 function App() {
